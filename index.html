@@ -17,12 +17,12 @@
   tbody tr { cursor: pointer; }
 
 
-    .card.clickable { cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; border: 2px solid transparent; }
+
     .card.clickable:hover { transform: scale(1.02); }
     .card.active-filter { border-color: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(255,255,255,0.3); transform: scale(1.02); }
 
 
-    .card.clickable { cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; border: 2px solid transparent; }
+
     .card.clickable:hover { transform: scale(1.02); }
     .card.active-filter { border-color: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(255,255,255,0.3); transform: scale(1.02); }
     .class-badge { display: inline-block; padding: 1px 5px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-left: 5px; background: #374151; color: white; vertical-align: text-bottom; }
@@ -79,8 +79,8 @@
   .panel h2 { margin: 0 0 8px 0; font-size: 15px; color: var(--accent-2); letter-spacing: 0.3px; }
   .panel .cut { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  thead th { background: #0ea5e9; color: #fff; padding: 8px; text-align: center; font-weight: 600; border: 1px solid #0284c7; position: sticky; top: 0; white-space: nowrap; }
-  tbody td { padding: 6px 8px; border: 1px solid var(--panel-2); text-align: center; background: rgba(255,255,255,0.02); }
+  thead th { background: #0ea5e9; color: #fff; padding: 4px; text-align: center; font-weight: 600; border: 1px solid #0284c7; position: sticky; top: 0; white-space: nowrap; }
+  tbody td { padding: 4px; border: 1px solid var(--panel-2); text-align: center; background: rgba(255,255,255,0.02); }
   tbody tr:nth-child(even) td { background: rgba(255,255,255,0.04); }
   tbody tr:hover td { background: rgba(56,189,248,0.08); }
 
@@ -92,11 +92,11 @@
   tr.row-b:hover td { background: rgba(248, 113, 113, 0.32) !important; }
   tr.row-ab:hover td { background: rgba(34, 197, 94, 0.22) !important; }
 
-  td.rank { font-weight: 700; color: var(--accent-2); width: 50px; }
-  td.sbd { font-variant-numeric: tabular-nums; color: var(--good); font-weight: 600; width: 70px; }
-  td.name { text-align: left; }
-  td.score { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; width: 80px; }
-  td.note { width: 160px; }
+  td.rank { font-weight: 700; color: var(--accent-2); width: 35px; }
+  td.sbd { font-variant-numeric: tabular-nums; color: var(--good); font-weight: 600; width: 45px; }
+  td.name { text-align: left; padding: 4px 8px; font-size: 0.95em; min-width: 140px; }
+  td.score { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; width: 50px; }
+  td.note { width: 120px; }
   .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
   .badge-a { background: var(--warn); color: #1f2937; }
   .badge-b { background: var(--bad); color: #1f2937; }
@@ -104,7 +104,7 @@
   footer { text-align: center; color: var(--muted); font-size: 11px; margin-top: 18px; }
   @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .summary { grid-template-columns: repeat(2, 1fr); } }
 
-    .card.clickable { cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; border: 2px solid transparent; }
+
     .card.clickable:hover { transform: scale(1.02); }
     .card.active-filter { border-color: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(255,255,255,0.3); transform: scale(1.02); }
 
@@ -805,71 +805,27 @@
         });
     });
 })();
+
     let currentFilter = null;
     window.toggleFilter = function(filterClass, element) {
-        if (currentFilter === filterClass || filterClass === 'all') {
+        if (currentFilter === filterClass || filterClass === \'all\') {
             currentFilter = null;
-            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
-            document.querySelectorAll('tbody tr').forEach(tr => tr.style.display = '');
-            if (filterClass === 'all') element.classList.add('active-filter');
+            document.querySelectorAll(\'\.card\.clickable\').forEach(c => c.classList.remove(\'active-filter\'));
+            document.querySelectorAll(\'tbody tr\').forEach(tr => tr.style.display = \'\');
+            if (filterClass === \'all\') element.classList.add(\'active-filter\');
         } else {
             currentFilter = filterClass;
-            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
-            element.classList.add('active-filter');
-            document.querySelectorAll('tbody tr').forEach(tr => {
+            document.querySelectorAll(\'\.card\.clickable\').forEach(c => c.classList.remove(\'active-filter\'));
+            element.classList.add(\'active-filter\');
+            document.querySelectorAll(\'tbody tr\').forEach(tr => {
                 if (tr.classList.contains(filterClass)) {
-                    tr.style.display = '';
+                    tr.style.display = \'\';
                 } else {
-                    tr.style.display = 'none';
+                    tr.style.display = \'none\';
                 }
             });
         }
     };
-
-    let currentFilter = null;
-    window.toggleFilter = function(filterClass, element) {
-        if (currentFilter === filterClass || filterClass === 'all') {
-            currentFilter = null;
-            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
-            document.querySelectorAll('tbody tr').forEach(tr => tr.style.display = '');
-            if (filterClass === 'all') element.classList.add('active-filter');
-        } else {
-            currentFilter = filterClass;
-            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
-            element.classList.add('active-filter');
-            document.querySelectorAll('tbody tr').forEach(tr => {
-                if (tr.classList.contains(filterClass)) {
-                    tr.style.display = '';
-                } else {
-                    tr.style.display = 'none';
-                }
-            });
-        }
-    };
-
-    let currentFilter = null;
-    window.toggleFilter = function(filterClass, element) {
-        if (currentFilter === filterClass || filterClass === 'all') {
-            currentFilter = null;
-            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
-            document.querySelectorAll('tbody tr').forEach(tr => tr.style.display = '');
-            if (filterClass === 'all') element.classList.add('active-filter');
-        } else {
-            currentFilter = filterClass;
-            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
-            element.classList.add('active-filter');
-            document.querySelectorAll('tbody tr').forEach(tr => {
-                if (tr.classList.contains(filterClass)) {
-                    tr.style.display = '';
-                } else {
-                    tr.style.display = 'none';
-                }
-            });
-        }
-    };
-
-
-    
 
 </script>
 </body>
