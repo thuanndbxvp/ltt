@@ -808,25 +808,24 @@
 
     let currentFilter = null;
     window.toggleFilter = function(filterClass, element) {
-        if (currentFilter === filterClass || filterClass === \'all\') {
+        if (currentFilter === filterClass || filterClass === 'all') {
             currentFilter = null;
-            document.querySelectorAll(\'\.card\.clickable\').forEach(c => c.classList.remove(\'active-filter\'));
-            document.querySelectorAll(\'tbody tr\').forEach(tr => tr.style.display = \'\');
-            if (filterClass === \'all\') element.classList.add(\'active-filter\');
+            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
+            document.querySelectorAll('tbody tr').forEach(tr => tr.style.display = '');
+            if (filterClass === 'all') element.classList.add('active-filter');
         } else {
             currentFilter = filterClass;
-            document.querySelectorAll(\'\.card\.clickable\').forEach(c => c.classList.remove(\'active-filter\'));
-            element.classList.add(\'active-filter\');
-            document.querySelectorAll(\'tbody tr\').forEach(tr => {
+            document.querySelectorAll('.card.clickable').forEach(c => c.classList.remove('active-filter'));
+            element.classList.add('active-filter');
+            document.querySelectorAll('tbody tr').forEach(tr => {
                 if (tr.classList.contains(filterClass)) {
-                    tr.style.display = \'\';
+                    tr.style.display = '';
                 } else {
-                    tr.style.display = \'none\';
+                    tr.style.display = 'none';
                 }
             });
         }
     };
-
 </script>
 </body>
 
